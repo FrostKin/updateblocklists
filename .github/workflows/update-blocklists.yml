@@ -15,9 +15,6 @@ jobs:
 
       - name: Set up Python
         uses: actions/setup-python@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
@@ -26,6 +23,12 @@ jobs:
 
       - name: Run update script
         run: python update_blocklist.py
+
+      - name: Debug: List remote URLs
+        run: git remote -v
+
+      - name: Debug: Check GH_TOKEN
+        run: echo "GH_TOKEN: ${{ secrets.GH_TOKEN }}"
 
       - name: Commit and push changes
         run: |
