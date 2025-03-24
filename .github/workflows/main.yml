@@ -1,0 +1,40 @@
+name: Update Blocklist
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run update script
+        run: python update_blocklist.py
+
+      - name: Debug: List remote URLs
+        run: git remote -v
+
+      - name: Debug: Check GH_TOKEN
+        run: echo "GH_TOKEN: ${{ secrets.GH_TOKEN }}"
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "wako227@gmail.com"
+          git config --global user.name "FrostKin"
+          git add combined_blocklist.txt
+          git commit -m "Update combined blocklist" || echo "No changes to commit"
+          git remote set-url origin "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/FrostKin/updateblocklists.git"
+          git push origin HEAD:main
