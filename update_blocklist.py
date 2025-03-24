@@ -21,7 +21,7 @@ for url in blocklist_urls:
     except requests.exceptions.RequestException as e:
         print(f"Error fetching {url}: {e}")
 
-with open("combined_blocklist.txt", "w") as f:
+with open("combined_blocklist.txt", "w", encoding="utf-8") as f:
     for item in combined_blocklist:
         f.write(item + "\n")
 
