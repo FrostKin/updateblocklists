@@ -3,7 +3,7 @@ import requests
 blocklist_urls = [
     "https://raw.githubusercontent.com/AdguardTeam/FiltersRegistry/master/filters/filter_2_Base/filter.txt",
     "https://big.oisd.nl",
-    "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt"
+    "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
     "https://easylist.to/easylist/easylist.txt"
     # Add your other blocklist URLs here
 ]
