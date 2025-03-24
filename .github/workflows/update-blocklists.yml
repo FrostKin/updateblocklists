@@ -36,5 +36,5 @@ jobs:
           git config --global user.name "FrostKin"
           git add combined_blocklist.txt
           git commit -m "Update combined blocklist" || echo "No changes to commit"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/FrostKin/updateblocklists.git
-          git push
+          git remote set-url origin "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/FrostKin/updateblocklists.git"
+          git push origin HEAD:main
